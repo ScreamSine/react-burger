@@ -6,34 +6,33 @@
   overflow-y: scroll;
 }
 
-::-webkit-scrollbar {
-  background: #2F2F37;
-  width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #8585AD;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #737397;
-}
-
-
 .title {
   font-size: 24px;
   font-weight: 700;
   line-height: 30px;
   letter-spacing: 0em;
   text-align: left;
+  margin-bottom: 24px;
 }
 
 .card {
   width: 272px;
   height: 208px;
-  margin-top: 24px;
   margin-bottom: 40px;
   cursor: pointer;
+  position: relative;
+}
+
+.circle {
+  width: 32px;
+  height: 32px;
+  background: #4C4CFF;
+  border-radius: 50%;
+  position: absolute;
+  left: 88%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .img {
@@ -53,4 +52,17 @@
 
 .name {
   text-align: center;
+}
+
+::-webkit-scrollbar {
+  background: #2F2F37;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8585AD;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #737397;
 }

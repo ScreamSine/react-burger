@@ -1,15 +1,10 @@
 import { useState } from 'react';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-import styles from './burger-ingredients.module.css';
-import { data } from '../../utils/data';
 import { IngridientItem } from '../ingridient-item/ingridient-item';
+import styles from './burger-ingredients.module.css';
 
-export const BurgerIngredients = () => {
+export const BurgerIngredients = ({ main, sauce, bun, modal, setModal }) => {
   const [current, setCurrent] = useState('one');
-
-  const [main, setMain] = useState(data.filter((el) => el.type === 'main'));
-  const [sauce, setSauce] = useState(data.filter((el) => el.type === 'sauce'));
-  const [bun, setBun] = useState(data.filter((el) => el.type === 'bun'));
 
   return (
     <div className={styles.wrapper}>
@@ -39,11 +34,26 @@ export const BurgerIngredients = () => {
         </Tab>
       </div>
       {current === 'one' ? (
-        <IngridientItem data={bun} title={'Булки'} />
+        <IngridientItem
+          data={bun}
+          title={'Булки'}
+          modal={modal}
+          setModal={setModal}
+        />
       ) : current === 'two' ? (
-        <IngridientItem data={sauce} title={'Соусы'} />
+        <IngridientItem
+          data={sauce}
+          title={'Соусы'}
+          modal={modal}
+          setModal={setModal}
+        />
       ) : (
-        <IngridientItem data={main} title={'Начинки'} />
+        <IngridientItem
+          data={main}
+          title={'Начинки'}
+          modal={modal}
+          setModal={setModal}
+        />
       )}
     </div>
   );
