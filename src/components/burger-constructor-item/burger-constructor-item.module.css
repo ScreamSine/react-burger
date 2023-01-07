@@ -1,0 +1,17 @@
+.ItemWrapper {
+  position: relative;
+  padding-left: 25px;
+}
+
+.constructorItem {
+  max-height: 80px;
+  margin-right: 10px;
+}
+
+.icon {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translate(0, -50%);
+}

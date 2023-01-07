@@ -1,10 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import { IngridientItem } from '../ingridient-item/ingridient-item';
 import styles from './burger-ingredients.module.css';
+import { data } from '../../utils/data';
+import { useDispatch } from 'react-redux';
+import * as ingridientAction from '../../redux/ingridientsReducer/action';
 
-export const BurgerIngredients = ({ main, sauce, bun, modal, setModal }) => {
+export const BurgerIngredients = () => {
+  const dispatch = useDispatch();
   const [current, setCurrent] = useState('one');
+
+  useEffect(() => {
+    dispatch(ingridientAction.getIngridients(data));
+  }, [dispatch]);
 
   return (
     <div className={styles.wrapper}>
@@ -34,26 +42,11 @@ export const BurgerIngredients = ({ main, sauce, bun, modal, setModal }) => {
         </Tab>
       </div>
       {current === 'one' ? (
-        <IngridientItem
-          data={bun}
-          title={'Булки'}
-          modal={modal}
-          setModal={setModal}
-        />
+        <IngridientItem title={'bun'} />
       ) : current === 'two' ? (
-        <IngridientItem
-          data={sauce}
-          title={'Соусы'}
-          modal={modal}
-          setModal={setModal}
-        />
+        <IngridientItem title={'sauce'} />
       ) : (
-        <IngridientItem
-          data={main}
-          title={'Начинки'}
-          modal={modal}
-          setModal={setModal}
-        />
+        <IngridientItem title={'main'} />
       )}
     </div>
   );

@@ -16,5 +16,6 @@ code {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  column-gap: 40px;
 }

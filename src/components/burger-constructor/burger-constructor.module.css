@@ -1,0 +1,34 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 16px;
+  max-height: 460px;
+  overflow-y: scroll;
+}
+
+.constructorItemTop {
+  margin-top: 100px;
+  margin-bottom: 16px;
+  margin-left: 25px;
+}
+
+.constructorItemBottom {
+  margin-top: 16px;
+  margin-left: 25px;
+}
+
+.result {
+  margin-top: 40px;
+  display: flex;
+  justify-content: end;
+  margin-right: 10px;
+  align-items: center;
+  column-gap: 40px;
+}
+
+.totalPrice {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}

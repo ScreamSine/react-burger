@@ -1,7 +1,11 @@
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './modal.module.css';
+import * as modalAction from '../../redux/modalReducer/action';
 
-export const Modal = ({ modal, setModal }) => {
+export const Modal = () => {
+  const modal = useSelector((state) => state.modal);
+  const dispatch = useDispatch();
   return (
     <>
       <div className={styles.overlay}>
@@ -10,14 +14,7 @@ export const Modal = ({ modal, setModal }) => {
             <div className={`${styles.detail} text text_type_main-large`}>
               Детали ингридиента
             </div>
-            <CloseIcon
-              onClick={() =>
-                setModal({
-                  open: false,
-                  content: null,
-                })
-              }
-            />
+            <CloseIcon onClick={() => dispatch(modalAction.closeModal())} />
           </div>
           <div className={styles.modalImg}>
             <img src={modal.content.image_large} alt={modal.content.name} />
