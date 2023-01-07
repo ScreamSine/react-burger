@@ -16,3 +16,23 @@ export const deleteItem = (id, price) => {
     },
   };
 };
+
+export const pickTopBottom = (topAndBottom) => {
+  return {
+    type: type.PICK_TOP_BOTTOM,
+    payload: topAndBottom,
+  };
+};
+
+export const deleteTopBottom = () => {
+  return {
+    type: type.DELETE_TOP_BOTTOM,
+  };
+};
+
+export const updateTopBottom = (newTopBottom) => {
+  return {
+    type: type.UPDATE_TOP_BOTTOM,
+    payload: newTopBottom,
+  };
+};

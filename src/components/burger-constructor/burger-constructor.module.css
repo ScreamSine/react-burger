@@ -1,3 +1,10 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 578px;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -7,19 +14,8 @@
   overflow-y: scroll;
 }
 
-.constructorItemTop {
-  margin-top: 100px;
-  margin-bottom: 16px;
-  margin-left: 25px;
-}
-
-.constructorItemBottom {
-  margin-top: 16px;
-  margin-left: 25px;
-}
-
 .result {
-  margin-top: 40px;
+  margin-top: 30px;
   display: flex;
   justify-content: end;
   margin-right: 10px;

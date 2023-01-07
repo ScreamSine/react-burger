@@ -1,6 +1,9 @@
 .ItemWrapper {
   position: relative;
-  padding-left: 25px;
+  width: 568px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .constructorItem {
@@ -10,8 +13,4 @@
 
 .icon {
   cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 0px;
-  transform: translate(0, -50%);
 }

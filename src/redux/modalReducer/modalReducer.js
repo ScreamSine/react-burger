@@ -9,7 +9,6 @@ const initialState = {
 const modalReducer = (state = initialState, action) => {
   switch (action.type) {
     case type.OPEN_MODAL:
-      console.log(action);
       return {
         open: true,
         content: action.payload.data,
