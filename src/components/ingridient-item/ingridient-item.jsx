@@ -1,16 +1,13 @@
 import styles from './ingridient-item.module.css';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components/dist/ui/icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { Modal } from '../modal/modal';
 import * as moadlAction from '../../redux/modalReducer/action';
 import * as orderAction from '../../redux/orderReducer/action';
 import * as ingridientAction from '../../redux/ingridientsReducer/action';
 
 export const IngridientItem = ({ title }) => {
-  const modal = useSelector((state) => state.modal);
-  const dispatch = useDispatch();
-
   const ingridients = useSelector((state) => state.ingridients);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -23,7 +20,7 @@ export const IngridientItem = ({ title }) => {
           .map((el) => (
             <div
               onClick={() => {
-                dispatch(moadlAction.openModal(el));
+                dispatch(moadlAction.openModal(el, 'info'));
                 dispatch(ingridientAction.pickIngridient(el._id));
                 dispatch(orderAction.addItem(el, Date.now()));
               }}
@@ -50,7 +47,6 @@ export const IngridientItem = ({ title }) => {
             </div>
           ))}
       </div>
-      {modal.open ? <Modal /> : null}
     </>
   );
 };

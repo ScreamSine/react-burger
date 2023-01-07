@@ -3,12 +3,14 @@ import {
   Button,
   CurrencyIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BurgerConstructorItem } from '../burger-constructor-item/burger-constructor-item';
+import * as modalAction from '../../redux/modalReducer/action';
 import styles from './burger-constructor.module.css';
 
 export const BurgerConstructor = () => {
   const order = useSelector((state) => state.orders);
+  const dispatch = useDispatch();
   return (
     <>
       <div className={styles.container}>
@@ -38,7 +40,11 @@ export const BurgerConstructor = () => {
             <div className="text text_type_digits-medium">{order.total}</div>
             <CurrencyIcon />
           </div>
-          <Button htmlType="button" type="primary">
+          <Button
+            onClick={() => dispatch(modalAction.openModal(order))}
+            htmlType="button"
+            type="primary"
+          >
             Оформить заказ
           </Button>
         </div>
