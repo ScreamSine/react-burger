@@ -7,6 +7,7 @@ import styles from './app.module.css';
 
 export const App = () => {
   const modal = useSelector((state) => state.modal);
+
   return (
     <>
       <AppHeader />
@@ -14,7 +15,7 @@ export const App = () => {
         <BurgerIngredients />
         <BurgerConstructor />
       </main>
-      {modal.open ? <Modal /> : null}
+      <Modal>{modal.content}</Modal>
     </>
   );
 };

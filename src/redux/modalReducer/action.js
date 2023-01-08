@@ -1,12 +1,10 @@
 import * as type from './types';
 
-export const openModal = (data, openType) => {
+export const openModal = (data) => {
+  console.log(data);
   return {
     type: type.OPEN_MODAL,
-    payload: {
-      data,
-      openType,
-    },
+    payload: data,
   };
 };
 

@@ -1,12 +1,14 @@
-import styles from './ingridient-item.module.css';
+import PropTypes from 'prop-types';
 import {
   Counter,
   CurrencyIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector, useDispatch } from 'react-redux';
+import styles from './ingridient-item.module.css';
 import * as moadlAction from '../../redux/modalReducer/action';
 import * as orderAction from '../../redux/orderReducer/action';
 import * as ingridientAction from '../../redux/ingridientsReducer/action';
+import { IngredientDetails } from '../ingredient-details/ingredient-details';
 
 export const IngridientItem = ({ title }) => {
   const ingridients = useSelector((state) => state.ingridients);
@@ -14,26 +16,20 @@ export const IngridientItem = ({ title }) => {
   const dispatch = useDispatch();
 
   const selectIngridient = (el) => {
-    // console.log('STATE', order.top?._id);
-    // console.log('PICK', el._id);
     if (el.type === 'bun' && !order.top) {
-      dispatch(moadlAction.openModal(el, 'info'));
+      // dispatch(moadlAction.openModal(el, 'info'));
+      dispatch(moadlAction.openModal(<IngredientDetails el={el} />));
       dispatch(ingridientAction.pickIngridient(el._id));
       dispatch(orderAction.pickTopBottom(el));
     } else if (el.type === 'bun' && el.__v >= 1) {
       return;
     } else if (el.type === 'bun' && order.top) {
-      // const choice = window.confirm('Вы хотите сменить булочку?');
-      // if (choice) {
-      dispatch(moadlAction.openModal(el, 'info'));
+      dispatch(moadlAction.openModal(<IngredientDetails el={el} />));
       dispatch(ingridientAction.deleteTopBottomCounter(order.top?._id));
       dispatch(orderAction.updateTopBottom(el));
       dispatch(ingridientAction.pickIngridient(el._id));
-      // } else {
-      //   return;
-      // }
     } else if (el.type !== 'bun' && order.top) {
-      dispatch(moadlAction.openModal(el, 'info'));
+      dispatch(moadlAction.openModal(<IngredientDetails el={el} />));
       dispatch(ingridientAction.pickIngridient(el._id));
       dispatch(orderAction.addItem(el, Date.now()));
     } else {
@@ -59,7 +55,7 @@ export const IngridientItem = ({ title }) => {
                 <Counter count={el.__v} size="default" extraClass="m-1" />
               ) : null}
               <div className={styles.img}>
-                <img src={el.image} alt="el.name" />
+                <img src={el.image} alt={el.name} />
               </div>
               <div className={`${styles.price} text text_type_digits-default`}>
                 <div>{el.price}</div>
@@ -73,4 +69,8 @@ export const IngridientItem = ({ title }) => {
       </div>
     </>
   );
+};
+
+IngridientItem.propTypes = {
+  title: PropTypes.string.isRequired,
 };

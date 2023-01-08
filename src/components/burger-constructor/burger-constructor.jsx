@@ -4,9 +4,10 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { BurgerConstructorItem } from '../burger-constructor-item/burger-constructor-item';
-import * as modalAction from '../../redux/modalReducer/action';
-import styles from './burger-constructor.module.css';
 import { BurgerTopBottom } from '../burger-top-bottom/BurgerTopBottom';
+import { OrderDetails } from '../order-details/order-details';
+import styles from './burger-constructor.module.css';
+import * as modalAction from '../../redux/modalReducer/action';
 
 export const BurgerConstructor = () => {
   const order = useSelector((state) => state.orders);
@@ -33,7 +34,7 @@ export const BurgerConstructor = () => {
               <CurrencyIcon />
             </div>
             <Button
-              onClick={() => dispatch(modalAction.openModal(order))}
+              onClick={() => dispatch(modalAction.openModal(<OrderDetails />))}
               htmlType="button"
               type="primary"
               disabled={!order.ingridients.length ? true : false}

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './BurgerTopBottom.module.css';
@@ -36,4 +37,8 @@ export const BurgerTopBottom = ({ children }) => {
       />
     </>
   );
+};
+
+BurgerTopBottom.defaultProps = {
+  children: PropTypes.object.isRequired,
 };
