@@ -14,17 +14,24 @@ export const IngridientItem = ({ title }) => {
   const dispatch = useDispatch();
 
   const selectIngridient = (el) => {
+    // console.log('STATE', order.top?._id);
+    // console.log('PICK', el._id);
     if (el.type === 'bun' && !order.top) {
       dispatch(moadlAction.openModal(el, 'info'));
       dispatch(ingridientAction.pickIngridient(el._id));
       dispatch(orderAction.pickTopBottom(el));
+    } else if (el.type === 'bun' && el.__v >= 1) {
+      return;
     } else if (el.type === 'bun' && order.top) {
-      const choice = window.confirm('Вы хотите сменить булочку?');
-      if (choice) {
-        dispatch(orderAction.updateTopBottom(el));
-      } else {
-        return;
-      }
+      // const choice = window.confirm('Вы хотите сменить булочку?');
+      // if (choice) {
+      dispatch(moadlAction.openModal(el, 'info'));
+      dispatch(ingridientAction.deleteTopBottomCounter(order.top?._id));
+      dispatch(orderAction.updateTopBottom(el));
+      dispatch(ingridientAction.pickIngridient(el._id));
+      // } else {
+      //   return;
+      // }
     } else if (el.type !== 'bun' && order.top) {
       dispatch(moadlAction.openModal(el, 'info'));
       dispatch(ingridientAction.pickIngridient(el._id));

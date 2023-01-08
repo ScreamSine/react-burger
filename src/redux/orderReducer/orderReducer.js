@@ -4,6 +4,7 @@ const initialState = {
   ingridients: [],
   top: null,
   total: 0,
+  topTotal: 0,
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -14,12 +15,6 @@ const orderReducer = (state = initialState, action) => {
         ingridients: [action.payload, ...state.ingridients],
         total: state.total + action.payload.price,
       };
-    case type.PICK_TOP_BOTTOM:
-      return {
-        ...state,
-        total: state.total + action.payload.price * 2,
-        top: action.payload,
-      };
     case type.DELETE_ITEM:
       return {
         ...state,
@@ -28,17 +23,24 @@ const orderReducer = (state = initialState, action) => {
         ),
         total: state.total - action.payload.price,
       };
+    case type.PICK_TOP_BOTTOM:
+      return {
+        ...state,
+        top: action.payload,
+        topTotal: action.payload.price * 2,
+      };
     case type.DELETE_TOP_BOTTOM:
       return {
         ingridients: [],
         top: null,
         total: 0,
+        topTotal: 0,
       };
     case type.UPDATE_TOP_BOTTOM:
       return {
         ...state,
         top: action.payload,
-        total: state.total + action.payload.price * 2,
+        topTotal: action.payload.price * 2,
       };
     default:
       return state;

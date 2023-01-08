@@ -2,6 +2,7 @@ import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-comp
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './BurgerTopBottom.module.css';
 import * as orderAction from '../../redux/orderReducer/action';
+import * as ingridientAction from '../../redux/ingridientsReducer/action';
 
 export const BurgerTopBottom = ({ children }) => {
   const topAndBottom = useSelector((state) => state.orders);
@@ -9,6 +10,7 @@ export const BurgerTopBottom = ({ children }) => {
 
   const deleteTopBottom = () => {
     dispatch(orderAction.deleteTopBottom());
+    dispatch(ingridientAction.deleteIngridient(topAndBottom.top._id));
   };
 
   return (

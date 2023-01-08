@@ -14,6 +14,10 @@ const ingridientsReducer = (state = initialState, action) => {
       return state.map((el) =>
         el._id === action.payload ? { ...el, __v: el.__v - 1 } : el
       );
+    case type.DELETE_TOP_BOTTOM_COUNTER:
+      return state.map((el) =>
+        el._id === action.payload ? { ...el, __v: el.__v - 1 } : el
+      );
     default:
       return state;
   }

@@ -27,7 +27,9 @@ export const BurgerConstructor = () => {
           ) : null}
           <div className={styles.result}>
             <div className={styles.totalPrice}>
-              <div className="text text_type_digits-medium">{order.total}</div>
+              <div className="text text_type_digits-medium">
+                {order.total + order.topTotal}
+              </div>
               <CurrencyIcon />
             </div>
             <Button

@@ -20,3 +20,10 @@ export const deleteIngridient = (id) => {
     payload: id,
   };
 };
+
+export const deleteTopBottomCounter = (id) => {
+  return {
+    type: type.DELETE_TOP_BOTTOM_COUNTER,
+    payload: id,
+  };
+};
