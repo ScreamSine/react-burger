@@ -5,31 +5,32 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './ingridient-item.module.css';
-import * as moadlAction from '../../redux/modalReducer/action';
 import * as orderAction from '../../redux/orderReducer/action';
 import * as ingridientAction from '../../redux/ingridientsReducer/action';
 import { IngredientDetails } from '../ingredient-details/ingredient-details';
 
-export const IngridientItem = ({ title }) => {
+export const IngridientItem = ({ title, setOpen, setModalContent }) => {
   const ingridients = useSelector((state) => state.ingridients);
   const order = useSelector((state) => state.orders);
   const dispatch = useDispatch();
 
   const selectIngridient = (el) => {
     if (el.type === 'bun' && !order.top) {
-      // dispatch(moadlAction.openModal(el, 'info'));
-      dispatch(moadlAction.openModal(<IngredientDetails el={el} />));
+      setOpen((prev) => !prev);
+      setModalContent(<IngredientDetails el={el} />);
       dispatch(ingridientAction.pickIngridient(el._id));
       dispatch(orderAction.pickTopBottom(el));
     } else if (el.type === 'bun' && el.__v >= 1) {
       return;
     } else if (el.type === 'bun' && order.top) {
-      dispatch(moadlAction.openModal(<IngredientDetails el={el} />));
+      setOpen((prev) => !prev);
+      setModalContent(<IngredientDetails el={el} />);
       dispatch(ingridientAction.deleteTopBottomCounter(order.top?._id));
       dispatch(orderAction.updateTopBottom(el));
       dispatch(ingridientAction.pickIngridient(el._id));
     } else if (el.type !== 'bun' && order.top) {
-      dispatch(moadlAction.openModal(<IngredientDetails el={el} />));
+      setOpen((prev) => !prev);
+      setModalContent(<IngredientDetails el={el} />);
       dispatch(ingridientAction.pickIngridient(el._id));
       dispatch(orderAction.addItem(el, Date.now()));
     } else {
@@ -73,4 +74,6 @@ export const IngridientItem = ({ title }) => {
 
 IngridientItem.propTypes = {
   title: PropTypes.string.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  setModalContent: PropTypes.func.isRequired,
 };

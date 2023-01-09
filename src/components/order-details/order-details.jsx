@@ -1,16 +1,10 @@
-import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useDispatch } from 'react-redux';
 import styles from './OrderDetails.module.css';
 import accept from '../../images/accept.svg';
-import * as modalAction from '../../redux/modalReducer/action';
 
 export const OrderDetails = () => {
-  const dispatch = useDispatch();
   return (
-    <div className={styles.modal}>
-      <div className={styles.modalTitle}>
-        <CloseIcon onClick={() => dispatch(modalAction.closeModal())} />
-      </div>
+    <div className={styles.order}>
+      <div className={styles.modalTitle}></div>
       <div className={`${styles.orderNum} text text_type_digits-large`}>
         324456
       </div>
