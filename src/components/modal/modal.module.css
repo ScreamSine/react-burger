@@ -1,5 +1,5 @@
 .modal,
-.modalOrder {
+.order {
   width: 720px;
   height: 539px;
   position: absolute;
@@ -12,60 +12,17 @@
   border-radius: 40px;
 }
 
+.order {
+  height: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .modalClose {
-  position: relative;
-  z-index: 2;
-  top: 40px;
-  padding: 20px 40px 20px;
-  display: flex;
-  justify-content: end;
+  position: absolute;
+  left: calc(100% - 60px);
+  bottom: calc(100% - 60px);
+  z-index: 10;
   cursor: pointer;
-}
-
-.modalTitle {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin: 40px 40px 0 40px;
-  cursor: pointer;
-}
-
-.detail {
-  width: 580px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-}
-
-.modalImg {
-  width: 520px;
-  height: 240px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  transform: scale(1.1);
-}
-
-.name {
-  font-size: 24px;
-  text-align: center;
-  margin-top: 16px;
-}
-
-.spec {
-  display: flex;
-  margin-top: 32px;
-  justify-content: center;
-  column-gap: 35px;
-}
-
-.ccal,
-.proteins,
-.fat,
-.carbohydrates {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: center;
 }

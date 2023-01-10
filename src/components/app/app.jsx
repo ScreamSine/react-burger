@@ -6,11 +6,19 @@ import { Modal } from '../modal/modal';
 import styles from './app.module.css';
 
 export const App = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState({
+    show: false,
+    title: null,
+  });
   const [modalContent, setModalContent] = useState(null);
 
-  const togglePopup = () => {
-    setOpen((prev) => !prev);
+  const togglePopup = (modalTitle) => {
+    setOpen((prev) => {
+      return {
+        title: modalTitle,
+        show: !prev.show,
+      };
+    });
   };
 
   return (
@@ -26,7 +34,11 @@ export const App = () => {
           setModalContent={setModalContent}
         />
       </main>
-      {open && <Modal togglePopup={togglePopup}>{modalContent}</Modal>}
+      {open.show && (
+        <Modal togglePopup={togglePopup} open={open}>
+          {modalContent}
+        </Modal>
+      )}
     </>
   );
 };

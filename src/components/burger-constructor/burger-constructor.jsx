@@ -35,7 +35,7 @@ export const BurgerConstructor = ({ togglePopup, setModalContent }) => {
             </div>
             <Button
               onClick={() => {
-                togglePopup();
+                togglePopup('order');
                 setModalContent(<OrderDetails />);
               }}
               htmlType="button"

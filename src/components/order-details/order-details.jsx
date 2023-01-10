@@ -3,7 +3,7 @@ import accept from '../../images/accept.svg';
 
 export const OrderDetails = () => {
   return (
-    <div className={styles.order}>
+    <>
       <div className={styles.modalTitle}></div>
       <div className={`${styles.orderNum} text text_type_digits-large`}>
         324456
@@ -22,6 +22,6 @@ export const OrderDetails = () => {
       >
         Дождитесь готовности на орбитальной станции
       </div>
-    </div>
+    </>
   );
 };

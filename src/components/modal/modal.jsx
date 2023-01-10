@@ -5,7 +5,7 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useEffect } from 'react';
 import styles from './modal.module.css';
 
-export const Modal = ({ children, togglePopup }) => {
+export const Modal = ({ children, togglePopup, open }) => {
   useEffect(() => {
     const closeByEscape = (e) => {
       if (e.key === 'Escape') {
@@ -23,7 +23,7 @@ export const Modal = ({ children, togglePopup }) => {
   return createPortal(
     <>
       <ModalOverlay togglePopup={togglePopup} />
-      <div className={styles.modal}>
+      <div className={open.title === 'order' ? styles.order : styles.modal}>
         <div className={styles.modalClose}>
           <CloseIcon onClick={togglePopup} />
         </div>
@@ -37,4 +37,5 @@ export const Modal = ({ children, togglePopup }) => {
 Modal.defaultProps = {
   children: PropTypes.object.isRequired,
   togglePopup: PropTypes.func.isRequired,
+  open: PropTypes.object,
 };
