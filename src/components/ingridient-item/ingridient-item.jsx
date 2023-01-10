@@ -9,27 +9,27 @@ import * as orderAction from '../../redux/orderReducer/action';
 import * as ingridientAction from '../../redux/ingridientsReducer/action';
 import { IngredientDetails } from '../ingredient-details/ingredient-details';
 
-export const IngridientItem = ({ title, setOpen, setModalContent }) => {
+export const IngridientItem = ({ title, togglePopup, setModalContent }) => {
   const ingridients = useSelector((state) => state.ingridients);
   const order = useSelector((state) => state.orders);
   const dispatch = useDispatch();
 
   const selectIngridient = (el) => {
     if (el.type === 'bun' && !order.top) {
-      setOpen((prev) => !prev);
+      togglePopup();
       setModalContent(<IngredientDetails el={el} />);
       dispatch(ingridientAction.pickIngridient(el._id));
       dispatch(orderAction.pickTopBottom(el));
     } else if (el.type === 'bun' && el.__v >= 1) {
       return;
     } else if (el.type === 'bun' && order.top) {
-      setOpen((prev) => !prev);
+      togglePopup();
       setModalContent(<IngredientDetails el={el} />);
       dispatch(ingridientAction.deleteTopBottomCounter(order.top?._id));
       dispatch(orderAction.updateTopBottom(el));
       dispatch(ingridientAction.pickIngridient(el._id));
     } else if (el.type !== 'bun' && order.top) {
-      setOpen((prev) => !prev);
+      togglePopup();
       setModalContent(<IngredientDetails el={el} />);
       dispatch(ingridientAction.pickIngridient(el._id));
       dispatch(orderAction.addItem(el, Date.now()));
@@ -74,6 +74,6 @@ export const IngridientItem = ({ title, setOpen, setModalContent }) => {
 
 IngridientItem.propTypes = {
   title: PropTypes.string.isRequired,
-  setOpen: PropTypes.func.isRequired,
+  togglePopup: PropTypes.func.isRequired,
   setModalContent: PropTypes.func.isRequired,
 };

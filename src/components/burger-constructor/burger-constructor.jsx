@@ -10,7 +10,7 @@ import { OrderDetails } from '../order-details/order-details';
 import styles from './burger-constructor.module.css';
 import { stateType } from '../../utils/types';
 
-export const BurgerConstructor = ({ setOpen, setModalContent }) => {
+export const BurgerConstructor = ({ togglePopup, setModalContent }) => {
   const order = useSelector((state) => state.orders);
 
   return (
@@ -35,7 +35,7 @@ export const BurgerConstructor = ({ setOpen, setModalContent }) => {
             </div>
             <Button
               onClick={() => {
-                setOpen((prev) => !prev);
+                togglePopup();
                 setModalContent(<OrderDetails />);
               }}
               htmlType="button"

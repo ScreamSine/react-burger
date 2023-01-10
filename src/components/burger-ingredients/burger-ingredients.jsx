@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import * as ingridientAction from '../../redux/ingridientsReducer/action';
 import { stateType } from '../../utils/types';
 
-export const BurgerIngredients = ({ setOpen, setModalContent }) => {
+export const BurgerIngredients = ({ togglePopup, setModalContent }) => {
   const dispatch = useDispatch();
   const [current, setCurrent] = useState('one');
 
@@ -46,19 +46,19 @@ export const BurgerIngredients = ({ setOpen, setModalContent }) => {
       {current === 'one' ? (
         <IngridientItem
           title={'bun'}
-          setOpen={setOpen}
+          togglePopup={togglePopup}
           setModalContent={setModalContent}
         />
       ) : current === 'two' ? (
         <IngridientItem
           title={'sauce'}
-          setOpen={setOpen}
+          togglePopup={togglePopup}
           setModalContent={setModalContent}
         />
       ) : (
         <IngridientItem
           title={'main'}
-          setOpen={setOpen}
+          togglePopup={togglePopup}
           setModalContent={setModalContent}
         />
       )}

@@ -8,20 +8,25 @@ import styles from './app.module.css';
 export const App = () => {
   const [open, setOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
+
+  const togglePopup = () => {
+    setOpen((prev) => !prev);
+  };
+
   return (
     <>
       <AppHeader />
       <main>
         <BurgerIngredients
-          setOpen={setOpen}
+          togglePopup={togglePopup}
           setModalContent={setModalContent}
         />
         <BurgerConstructor
-          setOpen={setOpen}
+          togglePopup={togglePopup}
           setModalContent={setModalContent}
         />
       </main>
-      {open && <Modal setOpen={setOpen}>{modalContent}</Modal>}
+      {open && <Modal togglePopup={togglePopup}>{modalContent}</Modal>}
     </>
   );
 };

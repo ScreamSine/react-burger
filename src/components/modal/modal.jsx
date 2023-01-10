@@ -5,11 +5,11 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useEffect } from 'react';
 import styles from './modal.module.css';
 
-export const Modal = ({ children, setOpen }) => {
+export const Modal = ({ children, togglePopup }) => {
   useEffect(() => {
     const closeByEscape = (e) => {
       if (e.key === 'Escape') {
-        setOpen((prev) => !prev);
+        togglePopup();
       }
     };
 
@@ -18,14 +18,14 @@ export const Modal = ({ children, setOpen }) => {
     return () => {
       document.removeEventListener('keydown', closeByEscape);
     };
-  }, [setOpen]);
+  }, [togglePopup]);
 
   return createPortal(
     <>
-      <ModalOverlay setOpen={setOpen} />
+      <ModalOverlay togglePopup={togglePopup} />
       <div className={styles.modal}>
         <div className={styles.modalClose}>
-          <CloseIcon onClick={() => setOpen((prev) => !prev)} />
+          <CloseIcon onClick={togglePopup} />
         </div>
         {children}
       </div>
@@ -36,5 +36,5 @@ export const Modal = ({ children, setOpen }) => {
 
 Modal.defaultProps = {
   children: PropTypes.object.isRequired,
-  setOpen: PropTypes.func.isRequired,
+  togglePopup: PropTypes.func.isRequired,
 };

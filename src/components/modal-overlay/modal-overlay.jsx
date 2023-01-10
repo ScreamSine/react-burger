@@ -1,15 +1,10 @@
 import PropTypes from 'prop-types';
 import styles from './modal-overlay.module.css';
 
-export const ModalOverlay = ({ setOpen }) => {
-  return (
-    <div
-      onClick={() => setOpen((prev) => !prev)}
-      className={styles.overlay}
-    ></div>
-  );
+export const ModalOverlay = ({ togglePopup }) => {
+  return <div onClick={togglePopup} className={styles.overlay}></div>;
 };
 
 ModalOverlay.propTypes = {
-  setOpen: PropTypes.func.isRequired,
+  togglePopup: PropTypes.func.isRequired,
 };

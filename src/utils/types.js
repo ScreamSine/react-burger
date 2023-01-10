@@ -1,4 +1,4 @@
-export const ingredientType = (PropTypes, newI) => {
+export const ingredientType = (PropTypes) => {
   const ingredientType = {
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -18,7 +18,7 @@ export const ingredientType = (PropTypes, newI) => {
 
 export const stateType = (PropTypes) => {
   const stateType = {
-    setOpen: PropTypes.func.isRequired,
+    togglePopup: PropTypes.func.isRequired,
     setModalContent: PropTypes.func.isRequired,
   };
   return stateType;
