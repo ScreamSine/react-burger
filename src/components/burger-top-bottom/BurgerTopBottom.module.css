@@ -1,0 +1,14 @@
+.constructorItemTop {
+  margin-top: 100px;
+  margin-bottom: 16px;
+  margin-left: 25px;
+}
+
+.constructorItemBottom {
+  margin-top: 16px;
+  margin-left: 25px;
+}
+
+.constructorItemBottom img {
+  transform: rotateX(180deg);
+}

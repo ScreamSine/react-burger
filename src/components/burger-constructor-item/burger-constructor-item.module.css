@@ -1,0 +1,16 @@
+.ItemWrapper {
+  position: relative;
+  width: 568px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.constructorItem {
+  max-height: 80px;
+  margin-right: 10px;
+}
+
+.icon {
+  cursor: pointer;
+}

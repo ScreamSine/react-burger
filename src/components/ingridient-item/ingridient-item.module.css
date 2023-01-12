@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 598px;
+  overflow-y: scroll;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.card {
+  width: 272px;
+  height: 208px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  position: relative;
+}
+
+.circle {
+  width: 32px;
+  height: 32px;
+  background: #4C4CFF;
+  border-radius: 50%;
+  position: absolute;
+  left: 88%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  margin: 0 auto;
+}
+
+.price {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  margin: 4px 0;
+}
+
+.name {
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+  background: #2F2F37;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8585AD;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #737397;
+}
