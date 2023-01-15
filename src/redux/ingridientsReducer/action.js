@@ -1,9 +1,13 @@
 import * as type from './types';
 
 export const getIngridients = (data) => {
-  return {
-    type: type.GET_INGRIDIENTS,
-    payload: data,
+  return async (dispatch) => {
+    const response = await fetch(
+      'https://norma.nomoreparties.space/api/ingredients '
+    );
+
+    const ingredients = await response.json();
+    dispatch({ type: type.GET_INGRIDIENTS, payload: ingredients.data });
   };
 };
 

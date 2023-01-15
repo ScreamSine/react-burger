@@ -1,20 +1,12 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import { IngridientItem } from '../ingridient-item/ingridient-item';
 import styles from './burger-ingredients.module.css';
-import { data } from '../../utils/data';
-import { useDispatch } from 'react-redux';
-import * as ingridientAction from '../../redux/ingridientsReducer/action';
 import { stateType } from '../../utils/types';
 
 export const BurgerIngredients = ({ togglePopup, setModalContent }) => {
-  const dispatch = useDispatch();
   const [current, setCurrent] = useState('one');
-
-  useEffect(() => {
-    dispatch(ingridientAction.getIngridients(data));
-  }, [dispatch]);
 
   return (
     <div className={styles.wrapper}>
